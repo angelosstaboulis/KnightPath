@@ -18,9 +18,14 @@ class ChessGame{
         
         let curY = knight.y
         
-        for item in 0..<row.count{
-            validMovesList.append(Node(x: curX + col[item], y: curY + row[item]))
-        }
+        validMovesList.append(Node(x: curX + 2, y: curY + 1))
+        validMovesList.append(Node(x: curX + 2, y: curY - 1))
+        validMovesList.append(Node(x: curX - 2, y: curY + 1))
+        validMovesList.append(Node(x: curX - 2, y: curY - 1))
+    
+        validMovesList.append(Node(x: curX + 1, y: curY + 2))
+        validMovesList.append(Node(x: curX + 1, y: curY - 2))
+        validMovesList.append(Node(x: curX - 1, y: curY + 2))
         
         
         return validMovesList
