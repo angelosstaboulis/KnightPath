@@ -23,52 +23,91 @@ class ChessGame{
         
         return validMovesList
     }
-    func makeBFS(src:Node,targetCell:Node) -> [NodeExtended]{
+    func createFirstRuleCriteria(currentCell:NodeExtended,targetCell:Node)->Bool{
+        return (currentCell.numberOfMovesMade < 3) ? true : false
+    }
+    func createSecondRuleCriteria(currentCell:NodeExtended,targetCell:Node)->Bool{
+        return ((currentCell.cell.x == targetCell.x) && (currentCell.cell.y == targetCell.y)) ? true : false
+    }
+    func makeBFS1(src:Node,targetCell:Node) -> [NodeExtended]{
         var newCells : [NodeExtended] = []
         let startingCell = NodeExtended(previousCell: nil,
                                         x: src.x,
                                         y: src.y,
                                         numberOfMovesMade: 0)
-        
+
         var knight = Node(x: src.x, y: src.y)
-        
-        
+
+
         let data = Queue(list: [])
         data.push(data: startingCell)
-        
-        
+
+
         while !data.isEmpty(){
             let topcell = data.peek()
-            
-            if !(topcell.numberOfMovesMade < 3){
-                if topcell.cell.x == targetCell.x && topcell.cell.y == targetCell.y{
+
+            if !createFirstRuleCriteria(currentCell: topcell, targetCell: targetCell){
+                if createSecondRuleCriteria(currentCell: topcell, targetCell: targetCell){
                     newCells.append(topcell)
                 }
-                data.pop()
-                continue
+                    data.pop()
+                    continue
             }
             knight = topcell.cell
-            
+
             let validMoves = getValidMoves(knight: knight)
-            
+
             var cells : [NodeExtended] = []
             for cell in validMoves {
                 cells.append(NodeExtended(previousCell: topcell, x: cell.x, y: cell.y, numberOfMovesMade: topcell.numberOfMovesMade + 1 ))
             }
-            
+
             data.pop()
-            
+
             for cell in cells {
                 data.push(data: cell)
             }
         }
+        return newCells
+  }
+    func makeBFS(src:Node,dest:Node) -> [NodeExtended]{
+        var newCells : [NodeExtended] = []
+        let startingCell = NodeExtended(previousCell: nil,
+                                                x: src.x,
+                                                y: src.y,
+                                                numberOfMovesMade: 0)
+        let queue = Queue(list: [])
+        queue.push(data: startingCell)
+        while !queue.isEmpty(){
+            let node = queue.peek()
+            if !createFirstRuleCriteria(currentCell: node, targetCell:dest) {
+                if createSecondRuleCriteria(currentCell: node, targetCell: dest){
+                    newCells.append(node)
+                }
+                
+                queue.pop()
+                continue
+            }
+            var arrayMoves : [NodeExtended] = []
+            for cell in getValidMoves(knight: node.cell) {
+                arrayMoves.append(NodeExtended(previousCell: node, x: cell.x, y: cell.y, numberOfMovesMade: node.numberOfMovesMade + 1 ))
+            }
+
+            queue.pop()
+
+            for cell in arrayMoves {
+                queue.push(data: cell)
+            }
+            
+        }
+       
         return newCells
     }
     func findAllPaths() -> [PathGame]{
         var pathFoundList : [PathGame] = []
         let knight = Node(x: 1, y: 1)
         let targetCell = Node(x: 4, y: 3)
-        let cellList = makeBFS(src: knight, targetCell: targetCell)
+        let cellList = makeBFS(src: knight, dest: targetCell)
         for curMetaCell in cellList{
             pathFoundList.append(curMetaCell.getPath())
         }

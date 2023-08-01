@@ -15,7 +15,7 @@ class Queue{
     }
     
     func push(data:NodeExtended){
-        list.append(data)
+        list.insert(data, at: 0)
     }
     func peek() -> NodeExtended {
         guard let topElement = list.first else { fatalError("This queue is empty.") }
