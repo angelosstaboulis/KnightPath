@@ -7,24 +7,26 @@
 
 import Foundation
 import GameplayKit
-class Node:GKGraphNode{
+class Node{
     let x:Int
     let y:Int
-    let dist:Int
-    init(x:Int,y:Int,dist:Int=0) {
+    let path:[Node]
+    init(x:Int,y:Int,path:[Node]=[]) {
         self.x = x
         self.y = y
-        self.dist = dist
-        super.init()
+        self.path = path
+    }
+    var algebraicNotation : String{
+        get{
+            var fullPathNotation = ""
+            for cell in path{
+                var letters = ""
+                letters += ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"][cell.x]
+                letters += "\(cell.y + 1)"
+                fullPathNotation += " \(letters) <- "
+            }
+            return String(fullPathNotation.dropLast(3))
+        }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    public func addConnections(nodesArray: [GKGraphNode], bidirectional: Bool) {
-        super.addConnections(to: nodesArray, bidirectional: bidirectional)
-    }
-    public func removeConnections(nodesArray: [GKGraphNode], bidirectional: Bool) {
-        super.removeConnections(to: nodesArray, bidirectional: bidirectional)
-    }
 }

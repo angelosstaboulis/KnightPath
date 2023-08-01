@@ -10,25 +10,23 @@ class NodeExtended{
     let previousCell: NodeExtended?
     let numberOfMovesMade: Int
     let cell: Node
-    
-    init(previousCell cell : NodeExtended?, x xPosition : Int, y yPosition : Int, numberOfMovesMade num : Int) {
+    var path : [NodeExtended] = []
+    init(previousCell cell : NodeExtended?, x xPosition : Int, y yPosition : Int, numberOfMovesMade num : Int,cells celllist: [NodeExtended]) {
         self.previousCell = cell
         self.numberOfMovesMade = num
         self.cell = Node(x: xPosition, y: yPosition)
+        self.path = celllist
     }
- 
-    func getPath() -> PathGame{
+    func getPath() -> Node{
         var cellVisitedList : [Node] = []
         
         var currentCell : NodeExtended? = self
         
         for _ in 1...numberOfMovesMade + 1{
-            
             cellVisitedList.append(currentCell!.cell)
-            
             currentCell = currentCell!.previousCell
         }
-        
-        return PathGame(cells: cellVisitedList)
+        return  Node(x: 0, y: 0, path: cellVisitedList)
     }
+
 }

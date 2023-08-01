@@ -12,7 +12,6 @@
 		D6C708992A785FFC00B7C7ED /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C708952A785FFC00B7C7ED /* Queue.swift */; };
 		D6C7089A2A785FFC00B7C7ED /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C708962A785FFC00B7C7ED /* Node.swift */; };
 		D6C7089B2A785FFC00B7C7ED /* NodeExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C708972A785FFC00B7C7ED /* NodeExtended.swift */; };
-		D6C7089D2A78604F00B7C7ED /* PathGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C7089C2A78604F00B7C7ED /* PathGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,7 +33,6 @@
 		D6C708952A785FFC00B7C7ED /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		D6C708962A785FFC00B7C7ED /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		D6C708972A785FFC00B7C7ED /* NodeExtended.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeExtended.swift; sourceTree = "<group>"; };
-		D6C7089C2A78604F00B7C7ED /* PathGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +70,6 @@
 				D6C708972A785FFC00B7C7ED /* NodeExtended.swift */,
 				D6C708952A785FFC00B7C7ED /* Queue.swift */,
 				D6C7088D2A78524800B7C7ED /* main.swift */,
-				D6C7089C2A78604F00B7C7ED /* PathGame.swift */,
 			);
 			path = KnightPath;
 			sourceTree = "<group>";
@@ -137,7 +134,6 @@
 			files = (
 				D6C708982A785FFC00B7C7ED /* ChessGame.swift in Sources */,
 				D6C708992A785FFC00B7C7ED /* Queue.swift in Sources */,
-				D6C7089D2A78604F00B7C7ED /* PathGame.swift in Sources */,
 				D6C7088E2A78524800B7C7ED /* main.swift in Sources */,
 				D6C7089A2A785FFC00B7C7ED /* Node.swift in Sources */,
 				D6C7089B2A785FFC00B7C7ED /* NodeExtended.swift in Sources */,
