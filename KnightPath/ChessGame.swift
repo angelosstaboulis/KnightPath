@@ -8,8 +8,6 @@
 import Foundation
 import GameplayKit
 class ChessGame{
-    var row : [Int] = [-2, -2, -2, -2, -2, -2, 2, 2]
-    var col : [Int] = [1, 1, 1, 1, 1, 1, 1, 1]
  
     func getValidMoves(knight:Node) -> [Node] {
         var validMovesList : [Node] = []
